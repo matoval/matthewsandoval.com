@@ -52,7 +52,15 @@ span {
   background-color: var(--secondary-bg);
 }
 
-.links nav {
+.links button {
+  display: none;
+}
+
+#mobile-nav {
+  display: none;
+}
+
+.main-nav {
   padding: 2rem 6vw;
   font-family: 'Nunito', sans-serif;
 }
@@ -201,8 +209,38 @@ span {
 }
 
 @media screen and (max-device-width: 600px) {
-  .links nav {
+  .main-nav {
     display: none;
+  }
+
+  .links button {
+    display: block;
+    border: none;
+    background-color: var(--secondary-bg);
+    color: var(--font-color);
+    font-size: 2rem;
+    margin: 1rem;
+    cursor: pointer;
+  }
+
+  #mobile-nav {
+    position: absolute;
+    z-index: 2;
+    background-color: var(--bg);
+    top: 4rem;
+    left: 1rem;
+    padding: 3rem;
+    line-height: 4.5rem;
+    box-shadow: .01rem .01rem .5rem var(--font-color);
+  }
+
+  #mobile-nav a {
+    font-weight: bold;
+    font-size: 2.5rem;
+  }
+
+  #mobile-nav a:hover {
+    color: var(--hover-color);
   }
 
   .hero {

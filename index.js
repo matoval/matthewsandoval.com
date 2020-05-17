@@ -1,3 +1,20 @@
+function dropdown() {
+  let isMenuOpen = false
+  const mobileNavDisplay = document.getElementById('mobile-nav')
+  const menuBtn = document.getElementById('menu-btn')
+
+  menuBtn.addEventListener('click', () => {
+    isMenuOpen = !isMenuOpen
+    if (isMenuOpen) {
+      mobileNavDisplay.style.display = 'block'
+      menuBtn.innerHTML = 'X'
+    } else {
+      mobileNavDisplay.style.display = 'none'
+      menuBtn.innerHTML = '&#9776;'
+    }
+    
+  })
+}
 
 function toggleDarkMode(event) {
   console.log(event.target.checked)
@@ -22,4 +39,5 @@ async function getArticle() {
   }
 }
 
+dropdown()
 getArticle()
