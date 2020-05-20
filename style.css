@@ -213,7 +213,7 @@ span {
     display: none;
   }
 
-  .links button {
+  #menu-btn {
     display: block;
     border: none;
     background-color: var(--secondary-bg);
