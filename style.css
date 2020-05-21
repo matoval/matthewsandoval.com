@@ -205,6 +205,11 @@ span {
   :root {
     font-size: 8px;
   }
+
+  body {
+    width: 100vw;
+  }
+
   .hero p {
     margin-top: -3rem;
   }
