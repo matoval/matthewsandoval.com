@@ -201,14 +201,14 @@ span {
   overflow: hidden;
 }
 
-@media screen and  (max-width: 700px) {
+@media only screen and  (max-width: 700px) {
   .hero {
     font-size: 1.8rem;
   }
 
 }
 
-@media screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
   .main-nav {
     display: none;
   }
@@ -262,7 +262,7 @@ span {
 
 }
 
-@media screen and (max-width: 448px) {
+@media only screen and (max-width: 448px) {
   .hero p {
     margin-top: -2rem;
   }
