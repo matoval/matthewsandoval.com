@@ -227,6 +227,11 @@ span {
     cursor: pointer;
   }
 
+  #menu-btn img {
+    height: 3rem;
+    width: 3rem;
+  }
+
   #mobile-nav {
     position: absolute;
     z-index: 2;
