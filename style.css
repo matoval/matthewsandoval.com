@@ -269,6 +269,10 @@ span {
   :root {
     font-size: 7px;
   }
+
+  body p {
+    font-size: 2.2rem;
+  }
   
   .hero p {
     margin-top: -2rem;
