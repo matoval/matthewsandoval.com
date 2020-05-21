@@ -201,14 +201,14 @@ span {
   overflow: hidden;
 }
 
-@media screen and  (max-device-width: 700px) {
+@media screen and  (max-width: 700px) {
   .hero {
     font-size: 1.8rem;
   }
 
 }
 
-@media screen and (max-device-width: 600px) {
+@media screen and (max-width: 600px) {
   .main-nav {
     display: none;
   }
@@ -249,7 +249,7 @@ span {
   }
 
   .hero p {
-    margin-top: -5rem;
+    margin-top: -4rem;
   }
 
   .project img {
@@ -262,7 +262,7 @@ span {
 
 }
 
-@media screen and (max-device-width: 448px) {
+@media screen and (max-width: 448px) {
   .hero p {
     margin-top: -2rem;
   }
@@ -287,7 +287,7 @@ span {
   
 }
 
-@media screen and (max-device-width: 330px) {
+@media screen and (max-width: 330px) {
   .hero p {
     margin-top: -.5rem;
   }
