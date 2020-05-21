@@ -202,13 +202,17 @@ span {
 }
 
 @media only screen and  (max-width: 700px) {
-  .hero {
-    font-size: 1.8rem;
+  :root {
+    font-size: 8px;
   }
 
 }
 
 @media only screen and (max-width: 600px) {
+  :root {
+    font-size: 7.5px;
+  }
+
   .main-nav {
     display: none;
   }
@@ -236,7 +240,6 @@ span {
 
   #mobile-nav a {
     font-weight: bold;
-    font-size: 2.5rem;
   }
 
   #mobile-nav a:hover {
@@ -245,7 +248,6 @@ span {
 
   .hero {
     padding: 0 1rem;
-    font-size: 1.5rem;
   }
 
   .hero p {
@@ -255,14 +257,13 @@ span {
   .project img {
     width: 30vw;
   }
-
-  .project-description a {
-    font-size: 2rem;
-  }
-
 }
 
 @media only screen and (max-width: 448px) {
+  :root {
+    font-size: 7px;
+  }
+  
   .hero p {
     margin-top: -2rem;
   }
@@ -277,7 +278,6 @@ span {
 
   .project p {
     text-align: left;
-    font-size: 1.5rem;
   }
 
   .project img {
@@ -287,7 +287,15 @@ span {
   
 }
 
-@media screen and (max-width: 330px) {
+@media screen and (max-width: 420px) {
+  :root {
+    font-size: 6.5px;
+  }
+
+  .hero {
+    height: 25rem;
+  }
+
   .hero p {
     margin-top: -.5rem;
   }
