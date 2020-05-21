@@ -7,10 +7,10 @@ function dropdown() {
     isMenuOpen = !isMenuOpen
     if (isMenuOpen) {
       mobileNavDisplay.style.display = 'block'
-      menuBtn.innerHTML = 'X'
+      menuBtn.innerHTML = '<img src="./assets/menu_X.png">'
     } else {
       mobileNavDisplay.style.display = 'none'
-      menuBtn.innerHTML = '&#9776;'
+      menuBtn.innerHTML = '<img src="./assets/menu_Ham.png">'
     }
     
   })
