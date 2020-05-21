@@ -205,7 +205,9 @@ span {
   :root {
     font-size: 8px;
   }
-
+  .hero p {
+    margin-top: -3rem;
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -257,7 +259,7 @@ span {
   }
 
   .hero p {
-    margin-top: -4rem;
+    margin-top: -3rem;
   }
 
   .project img {
