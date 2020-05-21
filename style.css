@@ -227,20 +227,21 @@ span {
 
   #menu-btn {
     display: block;
+    height: 4rem;
+    width: 6rem;
     border: none;
     background-color: var(--secondary-bg);
-    color: var(--font-color);
     font-size: 2rem;
     margin: 1rem;
     cursor: pointer;
   }
 
-  #menu-btn img {
-    height: 4rem;
-    width: 4rem;
+  #menu-btn-img {
+    height: 100%;
+    width: 100%;
   }
 
-  #menu-btn.dark {
+  #menu-btn-img.dark {
     filter: invert();
   }
 
