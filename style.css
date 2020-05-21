@@ -168,6 +168,7 @@ span {
 }
 
 #article-posts {
+  box-sizing: border-box;
   width: 100vw;
   padding: 0 6vw;
 }
