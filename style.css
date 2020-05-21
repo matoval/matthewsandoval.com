@@ -238,7 +238,7 @@ span {
 
   #menu-btn-img {
     height: 100%;
-    width: 100%;
+    width: auto;
   }
 
   #menu-btn.dark {
