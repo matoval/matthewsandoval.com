@@ -23,9 +23,11 @@ function toggleDarkMode(event) {
   if (isDarkmode) {
     document.documentElement.setAttribute('data-theme', 'dark')
     document.getElementById('slider').classList.add('dark')
+    document.getElementById('menu-btn').classList.add('dark')
   } else {
     document.documentElement.setAttribute('data-theme', '')
     document.getElementById('slider').classList.remove('dark')
+    document.getElementById('menu-btn').classList.remove('dark')
   }
 }
 

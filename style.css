@@ -240,6 +240,10 @@ span {
     width: 4rem;
   }
 
+  #menu-btn.dark {
+    filter: invert();
+  }
+
   #mobile-nav {
     position: absolute;
     z-index: 2;
