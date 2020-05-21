@@ -236,10 +236,11 @@ span {
     position: absolute;
     z-index: 2;
     background-color: var(--bg);
-    top: 4rem;
+    font-size: 4rem;
+    top: 6rem;
     left: 1rem;
     padding: 3rem;
-    line-height: 4.5rem;
+    line-height: 7rem;
     box-shadow: .01rem .01rem .5rem var(--font-color);
   }
 
