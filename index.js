@@ -7,10 +7,10 @@ function dropdown() {
     isMenuOpen = !isMenuOpen
     if (isMenuOpen) {
       mobileNavDisplay.style.display = 'block'
-      menuBtn.innerHTML = '<img id="menu-btn-img" src="./assets/menu_X.png">'
+      menuBtn.innerHTML = 'X'
     } else {
       mobileNavDisplay.style.display = 'none'
-      menuBtn.innerHTML = '<img id="menu-btn-img" src="./assets/menu_Ham.png">'
+      menuBtn.innerHTML = '&#9776;'
     }
     
   })
@@ -23,11 +23,9 @@ function toggleDarkMode(event) {
   if (isDarkmode) {
     document.documentElement.setAttribute('data-theme', 'dark')
     document.getElementById('slider').classList.add('dark')
-    document.getElementById('menu-btn').classList.add('dark')
   } else {
     document.documentElement.setAttribute('data-theme', '')
     document.getElementById('slider').classList.remove('dark')
-    document.getElementById('menu-btn').classList.remove('dark')
   }
 }
 

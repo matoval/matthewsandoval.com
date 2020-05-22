@@ -231,7 +231,8 @@ span {
     width: 6rem;
     border: none;
     background-color: rgba(0,0,0,0);
-    font-size: 2rem;
+    color: var(--font-color);
+    font-size: 3rem;
     margin: 1rem;
     cursor: pointer;
   }
@@ -239,10 +240,6 @@ span {
   #menu-btn-img {
     height: 100%;
     width: auto;
-  }
-
-  #menu-btn.dark {
-    filter: invert();
   }
 
   #mobile-nav {
