@@ -4,7 +4,7 @@
 :root {
   font-size: 10px;
   --bg: white;
-  --secondary-bg: rgb(236, 236, 236);
+  --secondary-bg: rgb(198, 221, 236);
   --font-color: black;
   --hover-color: rgb(14, 41, 179);
   --accent-color: rgb(24, 42, 131);
@@ -190,7 +190,7 @@ span {
 .article {
   text-align: center;
   border: solid .4rem var(--font-color);
-  width: 85vw;
+  width: 65vw;
   border-radius: 2rem;
   margin-bottom: 3rem;
   overflow: hidden;
@@ -213,6 +213,9 @@ span {
 
   .hero p {
     margin-top: -3rem;
+  }
+  .article {
+    width: 85vw;
   }
 }
 
