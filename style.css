@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap");
 
 :root {
   font-size: 10px;
@@ -33,16 +33,23 @@ body {
   background-color: var(--bg);
   color: var(--font-color);
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
-h1, h2, h3, h4 {
-  font-family: 'Nunito', sans-serif;
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Nunito", sans-serif;
 }
 
 span {
-  color:var(--accent-color);
+  color: var(--accent-color);
   font-weight: bold;
+}
+
+#hiddenDarkLabel {
+  color: rgba(0, 0, 0, 0);
 }
 
 .links {
@@ -62,7 +69,7 @@ span {
 
 .main-nav {
   padding: 2rem 8vw;
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
 }
 
 .links a {
@@ -77,7 +84,7 @@ span {
 
 #toggle {
   position: absolute;
-  top: .6rem;
+  top: 0.6rem;
   right: 1rem;
   margin: 0 1vw;
   width: 6rem;
@@ -98,11 +105,11 @@ span {
   cursor: pointer;
   height: 2.5rem;
   width: 2.5rem;
-  top: .42rem;
-  right: .7rem;
+  top: 0.42rem;
+  right: 0.7rem;
   border-radius: 3rem;
   background-color: var(--btn-color);
-  transition: ease-in .2s;
+  transition: ease-in 0.2s;
 }
 
 #slider.dark {
@@ -139,7 +146,7 @@ span {
   grid-template-columns: repeat(3, minmax(30vw, 3fr));
   margin-bottom: 5rem;
   padding-bottom: 5rem;
-  border-bottom: solid .3rem var(--font-color);
+  border-bottom: solid 0.3rem var(--font-color);
 }
 
 .project img {
@@ -156,7 +163,7 @@ span {
 
 .project-description a {
   text-decoration: none;
-  color:var(--accent-color);
+  color: var(--accent-color);
   font-weight: bold;
   font-size: 3rem;
   padding: 2rem;
@@ -176,11 +183,11 @@ span {
 #article-posts a {
   text-decoration: none;
   color: var(--font-color);
-} 
+}
 
 #article-posts a:hover {
   color: var(--hover-color);
-} 
+}
 
 #article-posts img {
   width: 100%;
@@ -189,7 +196,7 @@ span {
 
 .article {
   text-align: center;
-  border: solid .4rem var(--font-color);
+  border: solid 0.4rem var(--font-color);
   width: 65vw;
   border-radius: 2rem;
   margin-bottom: 3rem;
@@ -202,7 +209,7 @@ span {
   overflow: hidden;
 }
 
-@media only screen and  (max-width: 700px) {
+@media only screen and (max-width: 700px) {
   :root {
     font-size: 8px;
   }
@@ -233,7 +240,7 @@ span {
     height: 3rem;
     width: 6rem;
     border: none;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
     color: var(--font-color);
     font-size: 3rem;
     margin: 1rem;
@@ -254,7 +261,7 @@ span {
     left: 1rem;
     padding: 3rem;
     line-height: 7rem;
-    box-shadow: .01rem .01rem .5rem var(--font-color);
+    box-shadow: 0.01rem 0.01rem 0.5rem var(--font-color);
   }
 
   #mobile-nav a {
@@ -294,7 +301,7 @@ span {
   body p {
     font-size: 2.2rem;
   }
-  
+
   .hero p {
     margin-top: -2rem;
   }
@@ -315,7 +322,6 @@ span {
     width: 50vw;
     max-width: 100rem;
   }
-  
 }
 
 @media screen and (max-width: 420px) {
@@ -328,6 +334,6 @@ span {
   }
 
   .hero p {
-    margin-top: -.5rem;
+    margin-top: -0.5rem;
   }
 }

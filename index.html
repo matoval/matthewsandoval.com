@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Matthew Sandoval is a Web Developer, check out his projects and articles">
   <link rel="stylesheet" href="style.css">
   <title>Matthew Sandoval</title>
+  <link rel="icon" href="./assets/favicon.png" />
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166925076-1"></script>
   <script>
@@ -20,19 +22,20 @@
     <div class="links">
       <button id="menu-btn">&#9776;</button>
       <nav id="mobile-nav">
-        <a href="./assets/Matthew_Sandoval_Resume.pdf" target="_blank">Resume</a><br/>
+        <a href="./assets/Matthew_Sandoval_Resume.pdf" target="_blank" rel="noopener" rel="noreferrer">Resume</a><br/>
         <a href="mailto:mat24c@gmail.com">Email</a><br/>
-        <a href="https://www.linkedin.com/in/matoval/" target="_blank">LinkedIn</a><br/>
-        <a href="https://github.com/matoval" target="_blank">GitHub</a><br/>
+        <a href="https://www.linkedin.com/in/matoval/" target="_blank" rel="noopener" rel="noreferrer">LinkedIn</a><br/>
+        <a href="https://github.com/matoval" target="_blank" rel="noopener" rel="noreferrer">GitHub</a><br/>
       </nav>
       <nav class="main-nav">
-        <a href="./assets/Matthew_Sandoval_Resume.pdf" target="_blank">Resume</a>
+        <a href="./assets/Matthew_Sandoval_Resume.pdf" target="_blank" rel="noopener" rel="noreferrer">Resume</a>
         <a href="mailto:mat24c@gmail.com">Email</a>
-        <a href="https://www.linkedin.com/in/matoval/" target="_blank">LinkedIn</a>
-        <a href="https://github.com/matoval" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/matoval/" target="_blank" rel="noopener" rel="noreferrer">LinkedIn</a>
+        <a href="https://github.com/matoval" target="_blank" rel="noopener" rel="noreferrer">GitHub</a>
       </nav>
       <label id="toggle">
-        <input type="checkbox" onclick="toggleDarkMode(event)">
+        <label for="toggle" id="hiddenDarkLabel">Toggle Dark Mode</label>
+        <input name="toggle" type="checkbox" onclick="toggleDarkMode(event)">
         <span id="slider"></span>
       </label>
     </div>
@@ -47,7 +50,7 @@
       <div class="project-description">
         <h3>web-voice-command npm package</h3>
         <p>This package is built to simplify adding voice commands to your website. Using the Web Speech API this package allows you to use all vocal inputs, a list of specified words, or action words, which are a list of words that trigger a few options to control your site with only voice inputs.  </p>
-        <span><a href="https://www.npmjs.com/package/web-voice-command" target="_blank">npm Package Page</a><a href="https://github.com/matoval/web-voice-command" target="_blank">GitHub</a></span>
+        <span><a href="https://www.npmjs.com/package/web-voice-command" target="_blank" rel="noopener" rel="noreferrer">npm Package Page</a><a href="https://github.com/matoval/web-voice-command" target="_blank" rel="noopener" rel="noreferrer">GitHub</a></span>
       </div>
     </div>
     <div class="project">
@@ -55,7 +58,7 @@
       <div class="project-description">
         <h3>Full Stack Shopping List</h3>
         <p>I built this shopping list app using the MERN stack, React.js on the frontend and Node.js using Express on the backend. This app has user accounts and the ability to share shopping lists with other users. The server is an express server and all data is stored and accessed using MongoDB/Mongoose. The app uses JWT tokens to keep users logged in for a set amount of time. The users passwords are hashed and compared using Bcrypt. This app is hosted on Heroku.</p>
-        <span><a href="https://mern-shopping-list-matoval.herokuapp.com/" target="_blank">Live Site</a><a href="https://github.com/matoval/MERN_ShoppingList" target="_blank">GitHub</a></span>
+        <span><a href="https://mern-shopping-list-matoval.herokuapp.com/"  rel="noopener" rel="noreferrer">Live Site</a><a href="https://github.com/matoval/MERN_ShoppingList" target="_blank" rel="noopener" rel="noreferrer">GitHub</a></span>
       </div>
     </div>
     <div class="project">
@@ -63,7 +66,7 @@
       <div class="project-description">
         <h3>ascrapguy.com</h3>
         <p>I built the ascrapguy.com site with Svelte.js. I built a admin page for the client so that he can change the name and prices of items he will purchase. I used Firebase as the database. When data is changed or added to the database the site will load it to the DOM and update the date and time to the top of the table letting visitors of the site know when the last price change happened. I recently added a commercial page for commercial clients to access using a code. I built an API to authenticate the code and allow the user to persist access for a set amount of time using JWT tokens. The token would be void if the code is changed. </p>
-        <span><a href="https://ascrapguy.com/" target="_blank">Live Site</a></span>
+        <span><a href="https://ascrapguy.com/" target="_blank" rel="noopener" rel="noreferrer">Live Site</a></span>
       </div>
     </div>
     <div class="project">
@@ -71,7 +74,7 @@
       <div class="project-description">
         <h3>yourdensityaltitude.com</h3>
         <p>I built this density altitude app using Svelte.js. I used the native geolocation API to get the users gps coordinates. Using the users coordinates I used the Airmap API to get the users altitude and I used the Darksky weather API to get the users current weather data. With all this data I am able to calculate the users density altitude and insert the density altitude in feet to the DOM.</p>
-        <span><a href="https://yourdensityaltitude.com/" target="_blank">Live Site</a><a href="https://github.com/matoval/yourdensityaltitude.com" target="_blank" >GitHub</a></span>
+        <span><a href="https://yourdensityaltitude.com/" target="_blank" rel="noopener" rel="noreferrer">Live Site</a><a href="https://github.com/matoval/yourdensityaltitude.com" target="_blank" rel="noopener" rel="noreferrer">GitHub</a></span>
       </div>
     </div>
 
