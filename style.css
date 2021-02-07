@@ -1,25 +1,19 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Montserrat:wght@300;400&display=swap');
 
 :root {
   font-size: 10px;
   --bg: white;
-  --secondary-bg: linear-gradient(to right, rgb(197, 220, 236), rgb(101, 115, 161));
+  --accent-bg: #0B9D94;
   --font-color: black;
-  --hover-color: rgb(14, 41, 179);
-  --accent-color: rgb(24, 42, 131);
-  --secondary-font-color: black;
+  --hover-color: #0B9D94;
+  --accent-color: #0B9D94;
   --btn-bg: black;
   --btn-color: white;
 }
 
 [data-theme="dark"] {
-  --bg: rgb(48, 48, 48);
-  --secondary-bg: linear-gradient(to right, rgb(0, 0, 0), rgb(37, 37, 37));
+  --bg: black;
   --font-color: white;
-  --hover-color: rgb(185, 185, 185);
-  --accent-color: rgb(67, 84, 180);
-  --secondary-font-color: rgb(185, 185, 185);
   --btn-bg: white;
   --btn-color: black;
 }
@@ -40,12 +34,11 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: "Nunito", sans-serif;
+  font-family: 'Hammersmith One', sans-serif;
 }
 
 span {
   color: var(--accent-color);
-  font-weight: bold;
 }
 
 #hiddenDarkLabel {
@@ -68,8 +61,10 @@ span {
 }
 
 .main-nav {
-  padding: 2rem 0;
-  font-family: "Nunito", sans-serif;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  padding: 10px 100px;
 }
 
 .links a {
@@ -119,17 +114,17 @@ span {
 .hero {
   display: flex;
   height: 20rem;
-  background-image: var(--secondary-bg);
-  color: var(--secondary-font-color);
+  color: var(--font-color);
   flex-wrap: wrap;
   padding: 0 8vw;
+  margin-top: 30px;
 }
 
-.hero h1 {
-  display: block;
-  width: 100vw;
-  margin-bottom: 0;
-  margin-top: 4rem;
+.logo h1 {
+  padding: 0;
+  margin: 0;
+  font-weight: 300;
+  font-size: 35px;
 }
 
 .hero p {
