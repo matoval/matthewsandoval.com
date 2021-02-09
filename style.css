@@ -148,7 +148,7 @@ span {
 
 .copy_text {
   max-width: 400px;
-  padding-left: 5px;
+  padding: 20px;
 }
 
 .copy_img {
@@ -515,6 +515,11 @@ span {
 
   .logo h1 {
     font-size: 26px;
+  }
+
+  .copy_img img {
+    height: 280px;
+    width: 280px;
   }
 
   .article {
