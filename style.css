@@ -350,7 +350,7 @@ span {
 .footer {
   text-align: center;
   width: 100vw;
-  overflow: hidden;
+  margin-top: 150px;
 }
 
 @media only screen and (max-width: 900px) {
@@ -515,5 +515,27 @@ span {
 
   .logo h1 {
     font-size: 26px;
+  }
+
+  .article {
+    width: 200px;
+    height: 160px;
+  }
+
+  .article h2 {
+    font-size: 16px;
+  }
+
+  .project-description {
+    width: 200px;
+    height: 370px;
+  }
+
+  .project-description h3 {
+    font-size: 16px;
+  }
+
+  .project-description p {
+    font-size: 12px;
   }
 }
