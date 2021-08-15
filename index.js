@@ -40,7 +40,7 @@ async function getArticle() {
       .getElementById("article-posts")
       .insertAdjacentHTML(
         "beforeend",
-        `<div class='article'><a href='https://dev.to${article.path}' target='_blank' rel="noopener" rel="noreferrer"><img src='${article.main_image}' alt="article banner"/><br/><h2>${article.title}</h2></a></div>`
+        `<div class='article'><a href='https://dev.to${article.path}' target='_blank' rel="noopener" rel="noreferrer"><br/><h2>${article.title}</h2></a></div>`
       );
   }
 }
