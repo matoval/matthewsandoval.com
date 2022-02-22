@@ -16,7 +16,6 @@ func InitDB() {
 	var err error
 	cfg := config.Get()
 
-	fmt.Println("test in db file", cfg.Database)
 	if cfg.Database.Type == "postgres" {
 		dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%d",
 			cfg.Database.Hostname,
