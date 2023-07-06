@@ -7,9 +7,9 @@
 </svelte:head>
 
 <section>
+	<img src="ProfilePic.png" alt="Matthew Sandoval" width="300px">
 	<h3>Software engineer</h3>
 	<p>With experince building enterprise software as a full-stack engineer building UIs, apis, automation and services.</p>
-	<img src="ProfilePic.png" alt="Matthew Sandoval" width="300px">
 </section>
 
 <style>
