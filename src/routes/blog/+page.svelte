@@ -1,7 +1,5 @@
 <script>
 	import { formatDate } from '$lib/utils'
-
-	export let data
 </script>
 
 
@@ -12,13 +10,26 @@
 
 <div class="blog-home">
 	<ul>
-		{#each data.posts as post }
-			<li class="post">
-				<a href={`/blog/${post.slug}`} class="title">{post.title}</a>
-				<p class="date">{formatDate(post.date)}</p>
-				<p class="description">{post.description}</p>
-			</li>
-		{/each}
+		<li class="post">
+			<a href="/blog/first-post" class="title">First Post</a>
+			<p class="date">{formatDate("2023-11-14")}</p>
+			<p class="description">First post</p>
+		</li>
+		<li class="post">
+			<a href="/blog/next" class="title">Next</a>
+			<p class="date">{formatDate("2023-4-16")}</p>
+			<p class="description">Test post.</p>
+		</li>
+		<li class="post">
+			<a href="/blog/test1" class="title">test1</a>
+			<p class="date">{formatDate("2023-4-16")}</p>
+			<p class="description">Test post.</p>
+		</li>
+		<li class="post">
+			<a href="/blog/test2" class="title">Second</a>
+			<p class="date">{formatDate("2023-4-16")}</p>
+			<p class="description">Second post.</p>
+		</li>
 	</ul>
 </div>
 

@@ -5,7 +5,7 @@
 </script>
 
 <header>
-	<h1>Matthew Sandoval</h1>
+	<h1><a href="/">Matthew Sandoval</a></h1>
 </header>
 
 <style>
@@ -16,4 +16,9 @@
 		border: var(--border);
 		margin: 4px;
 	}
+
+	h1 > a {
+		color: var(--text-color);
+	}
+
 </style>

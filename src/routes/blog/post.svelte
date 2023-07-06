@@ -1,34 +1,37 @@
 <script>
 	import { formatDate } from '$lib/utils'
 
-	export let data
+	export let title
+	export let description
+	export let date
+	export let categories
+	export let published
+
 </script>
 
 <!-- SEO -->
 <svelte:head>
-	<title>{data.meta.title}</title>
+	<title>{title}</title>
 	<meta property="og:type" content="article" />
-	<meta property="og:title" content={data.meta.title} />
+	<meta property="og:title" content={title} />
 </svelte:head>
 
 <article>
   <!-- Title -->
 	<hgroup>
-		<h1>{data.meta.title}</h1>
-		<p>Published at {formatDate(data.meta.date)}</p>
+		<h1>{title}</h1>
+		<p>Published at {formatDate(date)}</p>
 	</hgroup>
 
   <!-- Tags -->
 	<div class="tags">
-		{#each data.meta.categories as category}
+		{#each categories as category}
 			<span class="surface-4">&num;{category}</span>
 		{/each}
 	</div>
 
   <!-- Post -->
-	<div class="prose">
-		<svelte:component this={data.content} />
-	</div>
+	<slot />
 </article>
 
 <style>

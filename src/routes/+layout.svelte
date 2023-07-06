@@ -4,8 +4,6 @@
 	import './styles.css';
 	import resume from '$lib/Matthew_Sandoval_Resume.pdf'
 
-	export let data
-
 	const currentYear = new Date().getFullYear();
 </script>
 
@@ -33,17 +31,17 @@
 				<div class="nav-title">links</div>
 				<ul>
 					<li>
-						<a href="https://www.linkedin.com/in/matoval/">
+						<a href="https://www.linkedin.com/in/matoval/" target="_blank" rel="noopener noreferrer">
 							linkedin
 						</a>
 					</li>
 					<li>
-						<a href="https://github.com/matoval">
+						<a href="https://github.com/matoval" target="_blank" rel="noopener noreferrer">
 							github
 						</a>	
 					</li>
 					<li>
-						<a href={resume}>
+						<a href={resume} target="_blank" rel="noopener noreferrer">
 							resume
 						</a>
 					</li>
@@ -61,13 +59,21 @@
 					</a>
 				</div>
 				<ul>
-					{#each data.posts as post, i }
-						{#if i < 6}
-							<li><a href={`/blog/${post.slug}`} class="title">{post.title}</a></li>
-						{:else}
-							<li><a href="/blog">more blogs...</a></li>
-						{/if}
-					{/each}
+					<li class:active={$page.url.pathname === "/blog/first-post"}>
+						<a href="/blog/first-post" class:active={$page.url.pathname === "/blog/first-post"}>First post</a>
+					</li>
+					<li class:active={$page.url.pathname === "/blog/next"}>
+						<a href="/blog/next" class:active={$page.url.pathname === "/blog/next"}>Next</a>
+					</li>
+					<li class:active={$page.url.pathname === "/blog/test1"}>
+						<a href="/blog/test1" class:active={$page.url.pathname === "/blog/test1"}>Test 1</a>
+					</li>
+					<li class:active={$page.url.pathname === "/blog/test2"}>
+						<a href="/blog/test2" class:active={$page.url.pathname === "/blog/test2"}>Test 2</a>
+					</li>
+					<li>
+						<a href="/blog">more blogs...</a>
+					</li>
 				</ul>
 			</div>
 		</section>
@@ -146,9 +152,14 @@
 		padding: 12px;
 	}
 
-	@media (min-width: 480px) {
+	@media (max-width: 480px) {
 		footer {
 			padding: 12px 0;
 		}
+
+		.nav {
+			width: 100px;
+		}
+
 	}
 </style>
