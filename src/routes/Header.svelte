@@ -1,11 +1,28 @@
 <script>
-	import { page } from '$app/stores';
-	import logo from '$lib/images/svelte-logo.svg';
-	import github from '$lib/images/github.svg';
+	import { mobile, mobileNav } from '../stores';
+
+	let isMobileNavOpen
+	let isMobile
+
+	mobile.subscribe((value) => {
+		isMobile = value;
+	});
+
+	mobileNav.subscribe((value) => {
+		isMobileNavOpen = value;
+	})
+
+
+	function dropdown() {
+		mobileNav.update(value => !value)
+	}
 </script>
 
 <header>
 	<h1><a href="/">Matthew Sandoval</a></h1>
+	{#if isMobile}
+	<button class="mobile-nav-btn" on:click={dropdown}>{isMobileNavOpen ? "[X]" : "[ ]"}</button>
+	{/if}
 </header>
 
 <style>
@@ -19,6 +36,22 @@
 
 	h1 > a {
 		color: var(--text-color);
+	}
+
+	@media (max-width: 480px) {
+		header {
+			width: 100vw;
+		}
+		.mobile-nav-btn {
+			display: block;
+			position: fixed;
+			right: 2px;
+			top: 8px;
+			background: none;
+			border: none;
+			color: var(--text-color);
+			width: 30px;
+		}
 	}
 
 </style>

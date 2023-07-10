@@ -5,7 +5,7 @@
 	export let description
 	export let date
 	export let categories
-	export let published
+	// export let published
 
 </script>
 
@@ -21,6 +21,7 @@
 	<hgroup>
 		<h1>{title}</h1>
 		<p>Published at {formatDate(date)}</p>
+		<p class="tldr">TL;DR: {description}</p>
 	</hgroup>
 
   <!-- Tags -->
@@ -38,6 +39,8 @@
 	article {
 		max-inline-size: var(--size-content-3);
 		margin-inline: auto;
+		max-width: 100vw;
+		overflow: auto;
 	}
 
 	h1 {
