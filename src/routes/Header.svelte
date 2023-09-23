@@ -38,7 +38,7 @@
 		color: var(--text-color);
 	}
 
-	@media (max-width: 480px) {
+	@media (max-width: 720px) {
 		header {
 			width: 100vw;
 		}

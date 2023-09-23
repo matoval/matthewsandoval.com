@@ -11,11 +11,11 @@
 <div class="blog-home">
 	<ul>
 		<li class="post">
-			<a href="/blog/first-post" class="title">First Post</a>
-			<p class="date">{formatDate("2023-11-14")}</p>
-			<p class="description">First post</p>
+			<a href="/blog/web-voice-command-package" class="title">web-voice-command Package</a>
+			<p class="date">{formatDate("2023-06-04")}</p>
+			<p class="description">Using the web-voice-command npm package I just published</p>
 		</li>
-		<li class="post">
+		<!-- <li class="post">
 			<a href="/blog/next" class="title">Next</a>
 			<p class="date">{formatDate("2023-4-16")}</p>
 			<p class="description">Test post.</p>
@@ -29,7 +29,7 @@
 			<a href="/blog/test2" class="title">Second</a>
 			<p class="date">{formatDate("2023-4-16")}</p>
 			<p class="description">Second post.</p>
-		</li>
+		</li> -->
 	</ul>
 </div>
 

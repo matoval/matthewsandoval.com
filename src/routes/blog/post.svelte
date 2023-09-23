@@ -39,7 +39,7 @@
 	article {
 		max-inline-size: var(--size-content-3);
 		margin-inline: auto;
-		max-width: 100vw;
+		max-width: 75vw;
 		overflow: auto;
 	}
 
@@ -59,7 +59,7 @@
 	}
 
 	.tags > * {
-		padding: var(--size-2) var(--size-3);
+		padding: 5px;
 		border-radius: var(--radius-round);
 	}
     

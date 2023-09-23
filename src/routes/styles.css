@@ -9,7 +9,7 @@
 	--color-bg-2: hsl(224, 44%, 95%);
 	--color-theme-1: #ff3e00;
 	--color-theme-2: #4075a6;
-	--color-text: #c2bec2;
+	--color-text: #e2e2e2;
 	--color-text-link: #19d305;
 	--active-bg: var(--color-text);
 	--column-width: 42rem;
@@ -56,9 +56,8 @@ h2 {
 pre {
 	font-size: 16px;
 	font-family: var(--font-mono);
-	background-color: rgba(255, 255, 255, 0.45);
+	background-color: rgba(71, 71, 71, 0.45);
 	border-radius: 3px;
-	box-shadow: 2px 2px 6px rgb(255 255 255 / 25%);
 	padding: 0.5em;
 	overflow-x: auto;
 	color: var(--color-text);

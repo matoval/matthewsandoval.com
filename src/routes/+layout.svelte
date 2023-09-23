@@ -23,7 +23,7 @@
 		mobileNav.update(() => false)
 	}
 
-	$: innerWidth <= 480 ? mobile.update(() => true) : mobile.update(() => false);
+	$: innerWidth <= 720 ? mobile.update(() => true) : mobile.update(() => false);
 
 </script>
 
@@ -80,10 +80,10 @@
 					</a>
 				</div>
 				<ul>
-					<li class:active={$page.url.pathname === "/blog/first-post"}>
-						<a href="/blog/first-post" class:active={$page.url.pathname === "/blog/first-post"}>First post</a>
+					<li class:active={$page.url.pathname === "/blog/web-voice-command-package"}>
+						<a href="/blog/web-voice-command-package" class:active={$page.url.pathname === "/blog/web-voice-command-package"}>web-voice-command Package</a>
 					</li>
-					<li class:active={$page.url.pathname === "/blog/next"}>
+					<!-- <li class:active={$page.url.pathname === "/blog/next"}>
 						<a href="/blog/next" class:active={$page.url.pathname === "/blog/next"}>Next</a>
 					</li>
 					<li class:active={$page.url.pathname === "/blog/test1"}>
@@ -94,7 +94,7 @@
 					</li>
 					<li>
 						<a href="/blog">more blogs...</a>
-					</li>
+					</li> -->
 				</ul>
 			</div>
 		</section>
@@ -151,10 +151,10 @@
 					</a>
 				</div>
 				<ul>
-					<li class:active={$page.url.pathname === "/blog/first-post"}>
-						<a on:click={handleClick} href="/blog/first-post" class:active={$page.url.pathname === "/blog/first-post"}>First post</a>
+					<li class:active={$page.url.pathname === "/blog/web-voice-command-package"}>
+						<a href="/blog/web-voice-command-package" class:active={$page.url.pathname === "/blog/web-voice-command-package"}>web-voice-command Package</a>
 					</li>
-					<li class:active={$page.url.pathname === "/blog/next"}>
+					<!-- <li class:active={$page.url.pathname === "/blog/next"}>
 						<a on:click={handleClick} href="/blog/next" class:active={$page.url.pathname === "/blog/next"}>Next</a>
 					</li>
 					<li class:active={$page.url.pathname === "/blog/test1"}>
@@ -165,7 +165,7 @@
 					</li>
 					<li>
 						<a on:click={handleClick} href="/blog">more blogs...</a>
-					</li>
+					</li> -->
 				</ul>
 			</div>
 		</section>
@@ -247,7 +247,7 @@
 		padding: 12px;
 	}
 
-	@media (max-width: 480px) {
+	@media (max-width: 720px) {
 		section {
 			width: 100vw;
 		}
