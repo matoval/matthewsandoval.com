@@ -20,6 +20,7 @@
 	}
 </script>
 
+<svelte:window bind:innerWidth />
 <header>
 	<h1><a href="/">Matthew Sandoval</a></h1>
 	{#if isMobile}

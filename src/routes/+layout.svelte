@@ -8,7 +8,6 @@
 	const currentYear = new Date().getFullYear();
 	let isMobile
 	let isMobileNavOpen
-	let innerWidth = 0
 
 	mobile.subscribe((value) => {
 		isMobile = value;
@@ -19,15 +18,11 @@
 	})
 
 	const handleClick = () => {
-		console.log('link clicked')
 		mobileNav.update(() => false)
 	}
 
-	$: innerWidth <= 720 ? mobile.update(() => true) : mobile.update(() => false);
-
 </script>
 
-<svelte:window bind:innerWidth />
 <div class="app">
 	<Header />
 	{#if !isMobile}
