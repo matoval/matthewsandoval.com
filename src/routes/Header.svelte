@@ -3,6 +3,8 @@
 
 	let isMobileNavOpen
 	let isMobile
+	let innerWidth = 0
+	$: innerWidth != 0 && innerWidth <= 720 ? mobile.update(() => true) : mobile.update(() => false);
 
 	mobile.subscribe((value) => {
 		isMobile = value;
@@ -21,7 +23,7 @@
 <header>
 	<h1><a href="/">Matthew Sandoval</a></h1>
 	{#if isMobile}
-	<button class="mobile-nav-btn" on:click={dropdown}>{isMobileNavOpen ? "[X]" : "[ ]"}</button>
+		<button class="mobile-nav-btn" on:click={dropdown}>{isMobileNavOpen ? "[X]" : "[ ]"}</button>
 	{/if}
 </header>
 
