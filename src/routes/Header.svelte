@@ -3,8 +3,6 @@
 
 	let isMobileNavOpen
 	let isMobile
-	let innerWidth = 0
-	$: innerWidth != 0 && innerWidth <= 720 ? mobile.update(() => true) : mobile.update(() => false);
 
 	mobile.subscribe((value) => {
 		isMobile = value;
@@ -20,7 +18,6 @@
 	}
 </script>
 
-<svelte:window bind:innerWidth />
 <header>
 	<h1><a href="/">Matthew Sandoval</a></h1>
 	{#if isMobile}
