@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+.visually-hidden {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: auto;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	white-space: nowrap;
+}
+
+.loading {
+  height: 93vh;
+  padding: 5px 5px;
+  font-size: 18px;
+}
+
+.prompt {
+  animation: blink-animation 1.2s none infinite;
+  font-size: 28px;
+}
+.prompt-text {
+  padding-top: 5px;
+  font-size: 18px;
+  width: 60px;
+}
+@keyframes blink-animation {
+  30% {
+  opacity: 0;
+  }
+}
+.home-main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  font-size: 18px;
+  width: 80vw;
+}
+.home-p {
+  max-width: 70vw;
+  line-height:35px;
+}
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+}
+@media (max-width: 720px) {
+  .home-main-content {
+    width: 100vw;
+    padding: 2px;
+  }
+  .home-p {
+    max-width: 90vw;
+    font-size: 13px;
+  }
+}
