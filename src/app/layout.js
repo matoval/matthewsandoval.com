@@ -33,6 +33,11 @@ export default function RootLayout({ children }) {
     if (counter < text.length) {
       setFullWord(prevState => prevState + text[counter])
     }
+    if (text != "" && counter == text.length) {
+      new Promise((resolve) => setTimeout(resolve, 800)).then(() => {
+        setIsLoading(false)
+      })
+    }
   },[counter, text])
 
   useEffect(() => {
@@ -61,9 +66,6 @@ export default function RootLayout({ children }) {
           }
         })
         innerWidth <= 720 ? setIsMobile(true) : setIsMobile(false)
-        new Promise((resolve) => setTimeout(resolve, 4500)).then(() => {
-          setIsLoading(false)
-        })
       }
     }
     checkInnerWidth()
