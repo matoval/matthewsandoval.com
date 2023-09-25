@@ -1,7 +1,5 @@
 import Link from "next/link"
 
-import { cn } from "../../lib/utils"
-
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   href?: string
   disabled?: boolean
@@ -16,11 +14,6 @@ export function MdxCard({
 }: CardProps) {
   return (
     <div
-      className={cn(
-        "group relative rounded-lg border p-6 shadow-md transition-shadow hover:shadow-lg",
-        disabled && "cursor-not-allowed opacity-60",
-        className
-      )}
       {...props}
     >
       <div className="flex flex-col justify-between space-y-4">

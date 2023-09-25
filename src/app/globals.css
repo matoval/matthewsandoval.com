@@ -114,6 +114,7 @@ pre {
 	border-radius: 3px;
 	padding: 0.5em;
 	overflow-x: auto;
+  max-width: 80vw;
 	color: var(--color-text);
 }
 
@@ -267,5 +268,8 @@ footer {
   }
   .li {
     padding: 8px 4px;
+  }
+  pre {
+    max-width: 94vw;
   }
 }
