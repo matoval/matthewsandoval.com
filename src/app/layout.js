@@ -117,7 +117,7 @@ export default function RootLayout({ children }) {
                               </Link>	
                             </li>
                             <li className="li">
-                              <Link href="public/Matthew_Sandoval_Resume.pdf" target="_blank" rel="noopener noreferrer">
+                              <Link href="/Matthew_Sandoval_Resume.pdf" target="_blank" rel="noopener noreferrer">
                                 resume
                               </Link>
                             </li>
