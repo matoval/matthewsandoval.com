@@ -1,7 +1,7 @@
 "use client"
 import './globals.css'
 import { Inter } from 'next/font/google'
-import Header from "../componets/Header"
+import Header from "./components/Header"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { usePathname } from 'next/navigation'

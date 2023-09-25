@@ -1,6 +1,5 @@
 import { allPosts, Post } from "contentlayer/generated"
-import { notFound } from "next/navigation";
-import { PageProps } from "../../../types/app/layout";
+import { PageProps } from "../../types/app/layout";
 import Head from "next/head";
 import Link from "next/link";
 
