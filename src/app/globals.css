@@ -1,33 +1,159 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import '@fontsource/fira-mono';
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+	--font-body: monospace;
+	--font-mono: monospace;
+	--color-bg-0: #03243d;
+	--color-bg-1: #151515;
+	--active-text: var(--color-bg-1);
+	--color-bg-2: hsl(224, 44%, 95%);
+	--color-theme-1: #ff3e00;
+	--color-theme-2: #4075a6;
+	--color-text: #e2e2e2;
+	--color-text-link: #19d305;
+	--active-bg: var(--color-text);
+	--column-width: 42rem;
+	--column-margin-top: 4rem;
+	--border: .5px solid var(--color-text);
+	font-family: var(--font-body);
+	color: var(--color-text);
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	margin: 0;
+	background-color: var(--color-bg-1);
 }
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+.main-content {
+  display: flex;
+  min-height: 90vh;
+}
+section {
+  margin: 4px;
+  width: 100%;
+  width: 140px;
+}
+.nav {
+  margin-bottom: 10px;
+  padding: 6px;
+  border: var(--border);
+  width: 140px;
+}
+
+.nav-title {
+  width: 30%;
+  height: 30px;
+  margin-top: -15px;
+  text-align: center;
+  background-color: var(--color-bg-1);
+}
+.ul {
+  padding: 0;
+  margin-top: -15px;
+}
+.li {
+  list-style: none;
+  margin: 4px 0;
+  font-size: 14px;
+}
+.li.active {
+  background-color: var(--active-bg);
+  color: var(--active-text);
+}
+
+.a {
+  display: inline-block;
+  width: 100%;
+}
+
+.a.active {
+  color: var(--active-text);
+}
+h1,
+h2,
+p {
+	font-weight: 400;
+}
+
+p {
+	line-height: 1.5;
+}
+
+a {
+	color: var(--color-text-link);
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+h1 {
+	font-size: 2rem;
+	text-align: center;
+}
+
+h2 {
+	font-size: 1rem;
+}
+
+pre {
+	font-size: 16px;
+	font-family: var(--font-mono);
+	background-color: rgba(71, 71, 71, 0.45);
+	border-radius: 3px;
+	padding: 0.5em;
+	overflow-x: auto;
+	color: var(--color-text);
+}
+
+.text-column {
+	display: flex;
+	max-width: 48rem;
+	flex: 0.6;
+	flex-direction: column;
+	justify-content: center;
+	margin: 0 auto;
+}
+
+input,
+button {
+	font-size: inherit;
+	font-family: inherit;
+}
+
+button:focus:not(:focus-visible) {
+	outline: none;
+}
+
 
 .visually-hidden {
 	border: 0;
+	clip: rect(0 0 0 0);
+	height: auto;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	white-space: nowrap;
+}
+
+.visually-hidden {
+  border: 0;
 	clip: rect(0 0 0 0);
 	height: auto;
 	margin: 0;
@@ -56,7 +182,7 @@ body {
 @keyframes blink-animation {
   30% {
   opacity: 0;
-  }
+}
 }
 .home-main-content {
   display: flex;
@@ -70,6 +196,21 @@ body {
   max-width: 70vw;
   line-height:35px;
 }
+.header {
+  display: flex;
+  justify-content: center;
+  background-color: var(--color-bg-0);
+  border: var(--border);
+  margin: 4px;
+  height: 80px;
+}
+.title {
+  align-self: center;
+}
+.title > a {
+  color: var(--text-color);
+}
+
 footer {
   display: flex;
   flex-direction: column;
@@ -77,13 +218,52 @@ footer {
   align-items: center;
   padding: 12px;
 }
+.post {
+  padding: 5px;
+}
+.desktop-main-content {
+  padding-left: 15px;
+}
+@media (min-width: 720px) {
+  h1 {
+    font-size: 2.4rem;
+  }
+}
 @media (max-width: 720px) {
+  .header {
+    width: 100vw;
+  }
+  .mobile-nav-btn {
+    display: block;
+    position: fixed;
+    right: 2px;
+    top: 8px;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    width: 30px;
+  }
+  .mobile-nav, .nav {
+    width: 99vw;
+  }
   .home-main-content {
     width: 100vw;
     padding: 2px;
   }
   .home-p {
     max-width: 90vw;
-    font-size: 13px;
+    font-size: 14px;
+    line-height:26px;
+  }
+  .loading, .prompt, .prompt-text {
+    font-size: 12px;
+  }
+  footer {
+    padding: 12px 0;
+    text-align: center;
+    font-size: 10px;
+  }
+  .li {
+    padding: 8px 4px;
   }
 }

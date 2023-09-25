@@ -1,7 +1,7 @@
 "use client"
 import './globals.css'
 import { Inter } from 'next/font/google'
-import Header from "@/componets/Header"
+import Header from "../componets/Header"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { usePathname } from 'next/navigation'
@@ -53,13 +53,15 @@ export default function RootLayout({ children }) {
             case '/':
               setText('cat home')
               break
-            case 'blog':
+            case '/blog':
               setText('cat blog')
               break
+            case '/blog/web-voice-command-package':
+              setText('cat blog -t web-voice-command-package')
           }
         })
         innerWidth <= 720 ? setIsMobile(true) : setIsMobile(false)
-        new Promise((resolve) => setTimeout(resolve, 5500)).then(() => {
+        new Promise((resolve) => setTimeout(resolve, 4500)).then(() => {
           setIsLoading(false)
         })
       }
@@ -69,8 +71,11 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
+      <head>
+      <link rel="icon" href="/favicon.png" sizes="any" />
+      </head>
       <body className={inter.className}>
-          <main className="flex min-h-screen flex-col">
+          <main>
           { isLoading ? (
             <div className="loading">
               [matthewsandoval.com ~]$ <span className="prompt-text">{promptText}</span>
@@ -79,20 +84,20 @@ export default function RootLayout({ children }) {
             ):(
               <div>
                 <Header isMobile={isMobile} isMobileNavOpen={isMobileNavOpen} setIsMobileNavOpen={setIsMobileNavOpen} />
-                <nav>
+                <div className='main'>
                   { !isMobile ? (
-                    <div>
+                    <div className='main-content'>
                       <section>
                         <div className="nav">
                           <div className="nav-title">main</div>
-                          <ul>
-                            <li activeClassName={pathname === "/"}>
-                              <Link href="/" activeClassName={pathname === "/"}>
+                          <ul className="ul">
+                            <li className={`li ${pathname === "/" && "active"}`}>
+                              <Link href="/" className={`a ${pathname === "/" && "active"}`}>
                                 home
                               </Link>
                             </li>
-                            <li activeClassName={pathname === "/blog"}>
-                              <Link href="/blog" activeClassName={pathname === "/blog"}>
+                            <li className={`li ${pathname === "/blog" && "active"}`}>
+                              <Link href="/blog" className={`a ${pathname === "/blog" && "active"}`}>
                                 blog
                               </Link>
                             </li>
@@ -100,23 +105,23 @@ export default function RootLayout({ children }) {
                         </div>
                         <div className="nav">
                           <div className="nav-title">links</div>
-                          <ul>
-                            <li>
+                          <ul className="ul">
+                            <li className="li">
                               <Link href="https://www.linkedin.com/in/matoval/" target="_blank" rel="noopener noreferrer">
                                 linkedin
                               </Link>
                             </li>
-                            <li>
+                            <li className="li">
                               <Link href="https://github.com/matoval" target="_blank" rel="noopener noreferrer">
                                 github
                               </Link>	
                             </li>
-                            <li>
+                            <li className="li">
                               <Link href="public/Matthew_Sandoval_Resume.pdf" target="_blank" rel="noopener noreferrer">
                                 resume
                               </Link>
                             </li>
-                            <li>
+                            <li className="li">
                               <Link href="mailto:mat24c@gmail.com">
                                 email
                               </Link>
@@ -129,43 +134,45 @@ export default function RootLayout({ children }) {
                               blog
                             </Link>
                           </div>
-                          <ul>
-                            <li activeClassName={pathname === "/blog/web-voice-command-package"}>
-                              <Link href="/blog/web-voice-command-package" activeClassName={pathname === "/blog/web-voice-command-package"}>
+                          <ul className="ul">
+                            <li className={`li ${pathname === "/blog/web-voice-command-package" && "active"}`}>
+                              <Link href="/blog/web-voice-command-package" className={`a ${pathname === "/blog/web-voice-command-package" && "active"}`}>
                                 web-voice-command Package
                               </Link>
                             </li>
-                            {/* <li activeClassName={pathname === "/blog/next"}>
-                              <Link href="/blog/next" activeClassName={pathname === "/blog/next"}>Next</a>
+                            {/* <li className="li" className={pathname === "/blog/next" && "active"}>
+                              <Link href="/blog/next" className={"a " + pathname === "/blog/next" && "active"}>Next</a>
                             </li>
-                            <li activeClassName={pathname === "/blog/test1"}>
-                              <Link href="/blog/test1" activeClassName={pathname === "/blog/test1"}>Test 1</a>
+                            <li className="li" className={pathname === "/blog/test1" && "active"}>
+                              <Link href="/blog/test1" className={"a " + pathname === "/blog/test1" && "active"}>Test 1</a>
                             </li>
-                            <li activeClassName={pathname === "/blog/test2"}>
-                              <Link href="/blog/test2" activeClassName={pathname === "/blog/test2"}>Test 2</a>
+                            <li className="li" className={pathname === "/blog/test2" && "active"}>
+                              <Link href="/blog/test2" className={"a " + pathname === "/blog/test2" && "active"}>Test 2</a>
                             </li>
-                            <li>
+                            <li className="li">
                               <Link href="/blog">more blogs...</a>
                             </li> */}
                           </ul>
                         </div>
                       </section>
-                      {children}
+                      <div className='desktop-main-content'>
+                        {children}
+                      </div>
                     </div>
                   ):(
-                    <div>
+                    <div className='main-content'>
                       { isMobileNavOpen ? (
-                        <section>
+                        <section className='mobile-nav'>
                           <div className="nav">
                             <div className="nav-title">main</div>
-                            <ul>
-                              <li activeClassName={pathname === "/"}>
-                                <Link onClick={() => setIsMobileNavOpen(prevState => !prevState)} href="/" activeClassName={pathname === "/"}>
+                            <ul className="ul">
+                              <li className={`li ${pathname === "/" && "active"}`}>
+                                <Link onClick={() => setIsMobileNavOpen(prevState => !prevState)} href="/" className={`a ${pathname === "/" && "active"}`}>
                                   home
                                 </Link>
                               </li>
-                              <li activeClassName={pathname === "/blog"}>
-                                <Link onClick={() => setIsMobileNavOpen(prevState => !prevState)} href="/blog" activeClassName={pathname === "/blog"}>
+                              <li className={`li ${pathname === "/blog" && "active"}`}>
+                                <Link onClick={() => setIsMobileNavOpen(prevState => !prevState)} href="/blog" className={`a ${pathname === "/blog" && "active"}`}>
                                   blog
                                 </Link>
                               </li>
@@ -173,23 +180,23 @@ export default function RootLayout({ children }) {
                           </div>
                           <div className="nav">
                             <div className="nav-title">links</div>
-                            <ul>
-                              <li>
+                            <ul className="ul">
+                              <li className="li">
                                 <Link href="https://www.linkedin.com/in/matoval/" target="_blank" rel="noopener noreferrer">
                                   linkedin
                                 </Link>
                               </li>
-                              <li>
+                              <li className="li">
                                 <Link href="https://github.com/matoval" target="_blank" rel="noopener noreferrer">
                                   github
                                 </Link>	
                               </li>
-                              <li>
+                              <li className="li">
                                 <Link href="public/Matthew_Sandoval_Resume.pdf" target="_blank" rel="noopener noreferrer">
                                   resume
                                 </Link>
                               </li>
-                              <li>
+                              <li className="li">
                                 <Link href="mailto:mat24c@gmail.com">
                                   email
                                 </Link>
@@ -202,35 +209,35 @@ export default function RootLayout({ children }) {
                                 blog
                               </Link>
                             </div>
-                            <ul>
-                              <li activeClassName={pathname === "/blog/web-voice-command-package"}>
-                                <Link href="/blog/web-voice-command-package" activeClassName={pathname === "/blog/web-voice-command-package"}>
+                            <ul className="ul">
+                              <li className={`li ${pathname === "/blog/web-voice-command-package" && "active"}`}>
+                                <Link href="/blog/web-voice-command-package" className={`a ${pathname === "/blog/web-voice-command-package" && "active"}`}>
                                   web-voice-command Package
                                 </Link>
                               </li>
-                              {/* <li activeClassName={pathname === "/blog/next"}>
-                                <Link onclick={() => setIsMobileNavOpen(prevState => !prevState)} href="/blog/next" activeClassName={pathname === "/blog/next"}>Next</a>
+                              {/* <li className="li" className={pathname === "/blog/next" && "active"}>
+                                <Link onclick={() => setIsMobileNavOpen(prevState => !prevState)} href="/blog/next" className={"a " + pathname === "/blog/next" && "active"}>Next</a>
                               </li>
-                              <li activeClassName={pathname === "/blog/test1"}>
-                                <Link onclick={() => setIsMobileNavOpen(prevState => !prevState)} href="/blog/test1" activeClassName={pathname === "/blog/test1"}>Test 1</a>
+                              <li className="li" className={pathname === "/blog/test1" && "active"}>
+                                <Link onclick={() => setIsMobileNavOpen(prevState => !prevState)} href="/blog/test1" className={"a " + pathname === "/blog/test1" && "active"}>Test 1</a>
                               </li>
-                              <li activeClassName={pathname === "/blog/test2"}>
-                                <Link onclick={() => setIsMobileNavOpen(prevState => !prevState)} href="/blog/test2" activeClassName={pathname === "/blog/test2"}>Test 2</a>
+                              <li className="li" className={pathname === "/blog/test2" && "active"}>
+                                <Link onclick={() => setIsMobileNavOpen(prevState => !prevState)} href="/blog/test2" className={"a " + pathname === "/blog/test2" && "active"}>Test 2</a>
                               </li>
-                              <li>
+                              <li className="li">
                                 <Link onclick={() => setIsMobileNavOpen(prevState => !prevState)} href="/blog">more blogs...</a>
                               </li> */}
                             </ul>
                           </div>
                         </section>
                       ):(
-                        <div>
+                        <div className='main-content'>
                           {children}
                         </div>
                       )}
                     </div>
                 )}
-                </nav>
+                </div>
               </div>
           )}
 

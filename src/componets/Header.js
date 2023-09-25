@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export default function Header({isMobile, isMobileNavOpen, setIsMobileNavOpen}) {
   return(
-    <header>
-      <h1>
+    <header className="header">
+      <h1 className="title">
         <Link href="/">Matthew Sandoval</Link>
       </h1>
       {isMobile && (
