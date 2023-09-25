@@ -1,9 +1,8 @@
 import { allPosts, Post } from "contentlayer/generated"
-import { PageProps } from "../../types/app/layout";
 import Head from "next/head";
 import Link from "next/link";
 
-interface pageProps {
+interface PageProps {
   params: {
     slug: string
   }
