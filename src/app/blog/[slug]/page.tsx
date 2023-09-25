@@ -3,7 +3,6 @@ import { allPosts } from "contentlayer/generated"
 
 import { Mdx } from "../../components/Mdx"
 
-import "../../../styles/mdx.css"
 import { Metadata } from "next"
 
 interface PageProps {

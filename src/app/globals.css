@@ -179,6 +179,11 @@ button:focus:not(:focus-visible) {
   font-size: 18px;
   width: 60px;
 }
+code {
+  border: none;
+  font-size: 14px !important;
+  line-height: 22px !important;
+}
 @keyframes blink-animation {
   30% {
   opacity: 0;
