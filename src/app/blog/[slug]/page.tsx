@@ -4,6 +4,7 @@ import { allPosts } from "contentlayer/generated"
 import { Mdx } from "../../components/Mdx"
 
 import { Metadata } from "next"
+import { formatDate } from "src/lib/utils"
 
 interface PageProps {
   params: {
@@ -64,6 +65,9 @@ export default async function Page({ params }: PageProps) {
         </h1>
         {page.description && (
           <p className="text-xl text-muted-foreground">{page.description}</p>
+        )}
+        {page.date && (
+          <p className="date">{formatDate(page.date)}</p>
         )}
       </div>
       <hr className="my-4" />
