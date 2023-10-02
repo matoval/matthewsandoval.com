@@ -1,0 +1,261 @@
+---
+title: Using sprite sheets in Ebitengine
+description: Creating a helper function that makes it easier to use sprite sheets in Ebitengine
+date: '2023-10-02'
+---
+
+This article will walk you through the process of creating an animation using a sprite sheet and Ebitengine. We will create a helper function that will simplify how we use the sprite sheet to create an animation. We will use constants that will allow changes and adjustment to be very simple.
+
+We start with a simple main file that draws the whole sprite sheet. This code sets up the window and draws an image in this case the sprite sheet. You can download the sprite sheet free from [Elthen's Pixel Art Shop on itch.io](https://elthen.itch.io/2d-pixel-art-fox-sprites).
+
+```go
+package main
+
+import (
+	"log"
+
+	_ "image/png"
+
+	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
+)
+
+var img *ebiten.Image
+
+func init() {
+	var err error
+	img, _, err = ebitenutil.NewImageFromFile("assets/Fox Sprite Sheet.png")
+	if err != nil {
+		log.Fatal(err)
+	}
+}
+
+type Game struct{}
+
+func (g *Game) Update() error {
+	return nil
+}
+
+func (g *Game) Draw(screen *ebiten.Image) {
+	screen.DrawImage(img, nil)
+}
+
+func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {
+	return 320, 240
+}
+
+func main() {
+	ebiten.SetWindowSize(640, 480)
+	ebiten.SetWindowTitle("Hello, World!")
+	if err := ebiten.RunGame(&Game{}); err != nil {
+		log.Fatal(err)
+	}
+}
+```
+Now we can create the helper function, SpriteSheet, that splits up the whole sprite sheet into tiles. We create a struct for SpriteSize and TileSize, which are SpriteSheet's parameters. SpriteSheet returns an array of type [image.Rectangle](https://pkg.go.dev/image#Rectangle). Image.Rectangle is the parameter type need for img.SubImage the function used to draw a section of an image that is attached to ebiten.Image.
+
+SpriteSheet creates two loops, the first one iterates over each row that is created by dividing the height of the sprite sheet by the height of the tile you'd like to create. The second loop iterates over each column in the same way. Inside the second loop we append an image.Rectangle to the sheet array resulting in an array that starts at the top left corner and goes right for each row. Now we know what index each tile is in and we can access that tile so we can draw it to the window. 
+
+``` go
+type TileSize struct {
+	height int
+	width  int
+}
+
+type SpriteSize struct {
+	height int
+	width  int
+}
+
+func SpriteSheet(tileSize TileSize, spriteSize SpriteSize) []image.Rectangle {
+	var sheet []image.Rectangle
+	for i := 0; i < spriteSize.height/tileSize.height; i++ {
+		for j := 0; j < spriteSize.width/tileSize.width; j++ {
+			sheet = append(sheet, image.Rectangle{image.Pt(j*tileSize.width, i*tileSize.height), image.Pt((j+1)*tileSize.width, (i+1)*tileSize.height)})
+		}
+	}
+	return sheet
+}
+```
+We have add the functionality to our helper function that will return an array of tiles but it would return partial tiles if the sprite sheet isn't evenly divisible by the size of the tile. In order for this function to always return correctly sized tiles we will add some error checking. An error will be returned if the sprite sheet isn't evenly divisible by the size of the tile.
+``` go
+func SpriteSheet(tileSize TileSize, spriteSize SpriteSize) ([]image.Rectangle, error) {
+	var sheet []image.Rectangle
+	if spriteSize.height%tileSize.height != 0 { // <---
+		return nil, fmt.Errorf("TileSize height of %v doesn't evenly fit in the sprint sheet height of %v", tileSize.height, spriteSize.height) // <---
+	}
+	if spriteSize.width%tileSize.width != 0 { // <---
+		return nil, fmt.Errorf("TileSize width of %v doesn't evenly fit in the sprint sheet width of %v", tileSize.height, spriteSize.height) // <---
+	}
+	for i := 0; i < spriteSize.height/tileSize.height; i++ {
+		for j := 0; j < spriteSize.width/tileSize.width; j++ {
+			sheet = append(sheet, image.Rectangle{image.Pt(j*tileSize.width, i*tileSize.height), image.Pt((j+1)*tileSize.width, (i+1)*tileSize.height)})
+		}
+	}
+	return sheet, nil
+}
+```
+With an array containing every tile of the sprite sheet we can draw a single tile to the window. First we need to call SpriteSheet with the size of the tile and sprite sheet. We assign both returned values to varibles and check for an error. Now we can use spriteSheetArr to return a single image.Rectangle to img.SubImage which returns a type of [image.Image](https://pkg.go.dev/image#Image) which is an interface and we will need to assert the type to type [ebiten.Image](https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Image) to pass it to [screen.DrawImage](https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#Image.DrawImage) as an argument and draw it to the window.
+```go
+func (g *Game) Draw(screen *ebiten.Image) {
+	spriteSheetArr, err := SpriteSheet(
+		TileSize{height: 32, width: 32},
+		SpriteSize{height: 224, width: 448},
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+	screen.DrawImage(img.SubImage(spriteSheetArr[0]).(*ebiten.Image), nil)
+}
+```
+We drew a single tile to the window but we can improve it by centering the image in the window. To do this we create a [DrawImageIptions](https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#DrawImageOptions) struct that can be passed to DrawImage as it's second prameter. DrawImageOptions has a property, GeoM, which is a geometry matrix for the location to draw and has a default of (0, 0). Using the [GeoM.Translate](https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#GeoM.Translate) function we first set the location to the center of the tile we are about to draw then the center of the window. Now our tile will be centered in the window. 
+```go
+	op := &ebiten.DrawImageOptions{}
+	op.GeoM.Translate(-float64(32)/2, -float64(32)/2)
+	op.GeoM.Translate(320/2, 240/2)
+	screen.DrawImage(img.SubImage(spriteSheetArr[0]).(*ebiten.Image), op)
+```
+Now that we have the ablility to draw a single tile, we can draw multiple tile in seqence and create an animation. Ebitengine uses an Update function that updates the game's logical state every tick, which has a default of 60 ticks per second. First we create the count property in the Game struct and increment the count in the Update function, resulting in count incrementing 60 times a second. Now we use the count to cycle through the tiles we want to draw to the window. By using the modulus operator(%) we can set the amount of tiles we will draw, in this case we want to draw 7 tiles. Next we set the starting tile we want to start at and increment through the next tiles until we get to the amount of tiles we set, in this case we will start with the tile at index 28 and increment through 7 tile then loop back to index 28.
+
+Once we get to this point we can see that 60 ticks per second doesn't display our sprite very well, it's drawing the next tile very quickly. We can use [ebiten.SetTPS](https://pkg.go.dev/github.com/hajimehoshi/ebiten/v2#SetTPS) to set the ticks per second to 10. Now our animation looks more natural. Keep in mind we have changed all updates to the game's logic to 10 times per second and this could cause unexpected issues but in our case we are only creating an animation so it's not an issue.
+
+```go
+type Game struct{
+	count int // <---
+}
+
+func (g *Game) Update() error {
+	g.count++ // <---
+	return nil
+}
+
+func (g *Game) Draw(screen *ebiten.Image) {
+	spriteSheetArr, err := SpriteSheet(
+		TileSize{height: 32, width: 32},
+		SpriteSize{height: 224, width: 448},
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+	op := &ebiten.DrawImageOptions{}
+	op.GeoM.Translate(-float64(32)/2, -float64(32)/2)
+	op.GeoM.Translate(320/2, 240/2)
+	screen.DrawImage(img.SubImage(spriteSheetArr[((g.count)%7)+28]).(*ebiten.Image), op) // <---
+}
+
+func main() {
+	ebiten.SetTPS(10) // <---
+	ebiten.SetWindowSize(640, 480)
+	ebiten.SetWindowTitle("Hello, World!")
+	if err := ebiten.RunGame(&Game{}); err != nil {
+		log.Fatal(err)
+	}
+}
+```
+Lastly let's clean up the code, we move all customizable values to constants to allow for easier updating and adjustments. Next we add some comments so our code is easier to read.
+```go
+package main
+
+import (
+	"fmt"
+	"image"
+	"log"
+
+	_ "image/png"
+
+	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
+)
+
+const (
+	windowWidth         = 640
+	windowHeight        = 480
+	ticksPerSecond      = 10
+	spriteFile          = "Fox Sprite Sheet.png"
+	spriteWidth         = 448
+	spriteHeight        = 224
+	tileWidth           = 32
+	tileHeight          = 32
+	outsideScreenWidth  = 320
+	outsideScreenHeight = 240
+	startTile           = 28
+	tileCount           = 7
+)
+
+var img *ebiten.Image
+
+func init() {
+	var err error
+	img, _, err = ebitenutil.NewImageFromFile(spriteFile)
+	if err != nil {
+		log.Fatal(err)
+	}
+}
+
+type TileSize struct {
+	height int
+	width  int
+}
+
+type SpriteSize struct {
+	height int
+	width  int
+}
+
+type Game struct {
+	count int
+}
+
+func (g *Game) Update() error {
+	g.count++
+	return nil
+}
+
+func SpriteSheet(tileSize TileSize, spriteSize SpriteSize) ([]image.Rectangle, error) {
+	var sheet []image.Rectangle
+	if spriteSize.height%tileSize.height != 0 {
+		return nil, fmt.Errorf("TileSize height of %v doesn't evenly fit in the sprint sheet height of %v", tileSize.height, spriteSize.height)
+	}
+	if spriteSize.width%tileSize.width != 0 {
+		return nil, fmt.Errorf("TileSize width of %v doesn't evenly fit in the sprint sheet width of %v", tileSize.height, spriteSize.height)
+	}
+	// Frist loop loops over each row of the sprite sheet
+	for i := 0; i < spriteSize.height/tileSize.height; i++ {
+		// Second loop loops over each column of the sprite sheet
+		for j := 0; j < spriteSize.width/tileSize.width; j++ {
+			sheet = append(sheet, image.Rectangle{image.Pt(j*tileSize.width, i*tileSize.height), image.Pt((j+1)*tileSize.width, (i+1)*tileSize.height)})
+		}
+	}
+	return sheet, nil
+}
+
+func (g *Game) Draw(screen *ebiten.Image) {
+	spriteSheetArr, err := SpriteSheet(
+		TileSize{height: tileHeight, width: tileWidth},
+		SpriteSize{height: spriteHeight, width: spriteWidth},
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+	// Centers the image on the screen
+	op := &ebiten.DrawImageOptions{}
+	op.GeoM.Translate(-float64(tileWidth)/2, -float64(tileHeight)/2)
+	op.GeoM.Translate(outsideScreenWidth/2, outsideScreenHeight/2)
+	// Draws tile to the screen starting with the tile with the index of startTile and continues until
+	// tileCount has been added to startTile then it resets
+	screen.DrawImage(img.SubImage(spriteSheetArr[((g.count)%tileCount)+startTile]).(*ebiten.Image), op)
+}
+
+func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {
+	return outsideScreenWidth, outsideScreenHeight
+}
+
+func main() {
+	ebiten.SetTPS(ticksPerSecond)
+	ebiten.SetWindowSize(windowWidth, windowHeight)
+	ebiten.SetWindowTitle("Animation!")
+	if err := ebiten.RunGame(&Game{}); err != nil {
+		log.Fatal(err)
+	}
+}
+```

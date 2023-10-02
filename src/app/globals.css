@@ -223,6 +223,7 @@ footer {
 }
 .post {
   padding: 5px;
+  list-style: none;
 }
 .desktop-main-content {
   padding-left: 15px;

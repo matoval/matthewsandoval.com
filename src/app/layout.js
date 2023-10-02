@@ -62,7 +62,11 @@ export default function RootLayout({ children }) {
               setText('cat blog')
               break
             case '/blog/web-voice-command-package':
-              setText('cat blog -t web-voice-command-package')
+              setText('cat blog -n web-voice-command-package')
+              break
+              case '/blog/using_sprite_sheets_in_ebitengine':
+                setText('cat blog -n using_sprite_sheets_in_ebitengine')
+                break
           }
         })
         innerWidth <= 720 ? setIsMobile(true) : setIsMobile(false)
@@ -142,10 +146,10 @@ export default function RootLayout({ children }) {
                                 web-voice-command Package
                               </Link>
                             </li>
-                            {/* <li className="li" className={pathname === "/blog/next" && "active"}>
-                              <Link href="/blog/next" className={"a " + pathname === "/blog/next" && "active"}>Next</a>
+                            <li className={`li ${pathname === "/blog/using_sprite_sheets_in_ebitengine" && "active"}`}>
+                              <Link href="/blog/using_sprite_sheets_in_ebitengine" className={`a ${pathname === "/blog/using_sprite_sheets_in_ebitengine" && "active"}`}>Using sprite sheets in Ebitengine</Link>
                             </li>
-                            <li className="li" className={pathname === "/blog/test1" && "active"}>
+                            {/* <li className="li" className={pathname === "/blog/test1" && "active"}>
                               <Link href="/blog/test1" className={"a " + pathname === "/blog/test1" && "active"}>Test 1</a>
                             </li>
                             <li className="li" className={pathname === "/blog/test2" && "active"}>
