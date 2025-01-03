@@ -245,7 +245,7 @@ footer {
     background: none;
     border: none;
     color: var(--text-color);
-    width: 40px;
+    width: 60px;
   }
   .mobile-nav, .nav {
     width: 99vw;
