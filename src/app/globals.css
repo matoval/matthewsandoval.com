@@ -235,12 +235,12 @@ footer {
 }
 @media (max-width: 720px) {
   .header {
-    width: 100vw;
+    width: 99vw;
   }
   .mobile-nav-btn {
     display: block;
     position: fixed;
-    right: 2px;
+    right: 5px;
     top: 8px;
     background: none;
     border: none;
