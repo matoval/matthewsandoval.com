@@ -7,9 +7,9 @@ import { Metadata } from "next"
 import { formatDate } from "src/lib/utils"
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 async function getPageFromParams(slug: string) {
@@ -25,7 +25,8 @@ async function getPageFromParams(slug: string) {
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
- const page = await getPageFromParams(params.slug)
+ const { slug } = await params
+ const page = await getPageFromParams(slug)
 
   if (!page) {
     return {}
@@ -51,7 +52,8 @@ export async function generateMetadata({
 }
 
 export default async function Page({ params }: PageProps) {
-  const page = await getPageFromParams(params.slug)
+  const { slug } = await params
+  const page = await getPageFromParams(slug)
 
   if (!page) {
     notFound()

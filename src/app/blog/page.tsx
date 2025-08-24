@@ -2,13 +2,7 @@ import { allPosts, Post } from "contentlayer/generated"
 import Head from "next/head";
 import Link from "next/link";
 
-interface PageProps {
-  params: {
-    slug: string
-  }
-}
-
-const blog = async ({params}: PageProps) => {
+const blog = async () => {
   return (
     <div className="blog-home">
       <Head>
