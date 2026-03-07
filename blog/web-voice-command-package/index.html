@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>web-voice-command npm Package - Matthew Sandoval</title>
+  <meta name="description" content="Using the web-voice-command npm package I just published">
+  <link rel="icon" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <noscript><style>#loading{display:none}#site{display:flex!important;flex-direction:column;flex:1}</style></noscript>
+</head>
+<body data-command="cat blog -n web-voice-command-package">
+  <main>
+    <div id="loading" class="loading">
+      [matthewsandoval.com ~]$ <span id="prompt-text" class="prompt-text"></span><span class="prompt">&#9646;</span>
+    </div>
+
+    <div id="site" style="display:none">
+      <header class="header">
+        <h1 class="title"><a href="/">Matthew Sandoval</a></h1>
+        <button id="mobile-nav-btn" class="mobile-nav-btn" aria-label="Toggle navigation">[ ]</button>
+      </header>
+
+      <div class="main">
+        <div class="main-content">
+
+          <section class="sidebar">
+            <div class="nav">
+              <div class="nav-title">main</div>
+              <ul class="ul">
+                <li class="li"><a href="/" class="a">home</a></li>
+                <li class="li"><a href="/blog" class="a">blog</a></li>
+              </ul>
+            </div>
+            <div class="nav">
+              <div class="nav-title">links</div>
+              <ul class="ul">
+                <li class="li"><a href="https://www.linkedin.com/in/matoval/" target="_blank" rel="noopener noreferrer">linkedin</a></li>
+                <li class="li"><a href="https://github.com/matoval" target="_blank" rel="noopener noreferrer">github</a></li>
+                <li class="li"><a href="/Matthew_Sandoval_Resume.pdf" target="_blank" rel="noopener noreferrer">resume</a></li>
+                <li class="li"><a href="mailto:mat24c@gmail.com">email</a></li>
+              </ul>
+            </div>
+            <div class="nav">
+              <div class="nav-title"><a href="/blog">blog</a></div>
+              <ul class="ul">
+                <li class="li active"><a href="/blog/web-voice-command-package" class="a active" aria-current="page">web-voice-command Package</a></li>
+                <li class="li"><a href="/blog/using_sprite_sheets_in_ebitengine" class="a">Using sprite sheets in Ebitengine</a></li>
+              </ul>
+            </div>
+          </section>
+
+          <div class="desktop-main-content">
+            <article>
+              <div>
+                <h1>web-voice-command npm Package</h1>
+                <p>Using the web-voice-command npm package I just published</p>
+                <p class="date">June 4, 2020</p>
+              </div>
+              <hr>
+
+              <p>npm package: <a href="https://www.npmjs.com/package/web-voice-command" target="_blank" rel="noopener noreferrer">web-voice-command</a><br>
+              The Web Speech API is an exciting glimpse into the future of the web. There are a ton of cool ideas I have for using voice to control the web. I will be build some in the next few weeks using the web-voice-command package that I just published.</p>
+
+              <h3>Goal for this package</h3>
+              <p>My goal is to make it easier to implement the Web Speech API. With this package installed you are able to integrate voice commands and voice-to-text in a few lines of code. <em>Web Speech only works in Chrome at the moment</em></p>
+
+              <h3>How to use it</h3>
+              <p>The package has four methods you can call.</p>
+              <ul>
+                <li>setOptions: Used to set options.</li>
+                <li>results: Returns all voice inputs.</li>
+                <li>startStop: Used to start and stop listening.</li>
+                <li>wordList: Returns only words you listed.</li>
+              </ul>
+
+              <p><strong>setOptions()</strong><br>
+              Default options are:</p>
+              <pre><code>  let options = {
+    persistentListening: false,
+    listenOnLoad: false,
+    language: 'en-US',
+  }</code></pre>
+
+              <p><em>setting language use BCP 47 Language Codes</em></p>
+              <ul>
+                <li>ar-SA Arabic Saudi Arabia</li>
+                <li>cs-CZ Czech Czech Republic</li>
+                <li>da-DK Danish Denmark</li>
+                <li>de-DE German Germany</li>
+                <li>el-GR Modern Greek Greece</li>
+                <li>en-AU English Australia</li>
+                <li>en-GB English United Kingdom</li>
+                <li>en-IE English Ireland</li>
+                <li>en-US English United States</li>
+                <li>en-ZA English South Africa</li>
+                <li>es-ES Spanish Spain</li>
+                <li>es-MX Spanish Mexico</li>
+                <li>fi-FI Finnish Finland</li>
+                <li>fr-CA French Canada</li>
+                <li>fr-FR French France</li>
+                <li>he-IL Hebrew Israel</li>
+                <li>hi-IN Hindi India</li>
+                <li>hu-HU Hungarian Hungary</li>
+                <li>id-ID Indonesian Indonesia</li>
+                <li>it-IT Italian Italy</li>
+                <li>ja-JP Japanese Japan</li>
+                <li>ko-KR Korean Republic of Korea</li>
+                <li>nl-BE Dutch Belgium</li>
+                <li>nl-NL Dutch Netherlands</li>
+                <li>no-NO Norwegian Norway</li>
+                <li>pl-PL Polish Poland</li>
+                <li>pt-BR Portuguese Brazil</li>
+                <li>pt-PT Portuguese Portugal</li>
+                <li>ro-RO Romanian Romania</li>
+                <li>ru-RU Russian Russian Federation</li>
+                <li>sk-SK Slovak Slovakia</li>
+                <li>sv-SE Swedish Sweden</li>
+                <li>th-TH Thai Thailand</li>
+                <li>tr-TR Turkish Turkey</li>
+                <li>zh-CN Chinese China</li>
+                <li>zh-HK Chinese Hong Kong</li>
+                <li>zh-TW Chinese Taiwan</li>
+              </ul>
+              <p>Use the setOptions function to change options.</p>
+              <pre><code> webVoiceCommand.setOptions({
+  persistentListening: true,
+  listenOnLoad: true,
+  language: 'ro-RO' //set language to ro-RO Romanian Romania
+})</code></pre>
+
+              <p><strong>results()</strong><br>
+              The results method is used to get all voice inputs and will return multiple arrays with each array separated by pauses in voice inputs.</p>
+              <pre><code> webVoiceCommand.results(function(result){
+  console.log(result)
+})</code></pre>
+              <p>With the voice input of "hello world" the results method will return:</p>
+              <pre><code>(2) ["hello", "world"]</code></pre>
+
+              <p><strong>startStop()</strong><br>
+              The startStop method is used to start and stop listening and is used with a DOM event. In this example we will use two buttons, one for start and another for stop. You can also use the same element as a toggle.</p>
+              <pre><code>&lt;button value='start' onClick={handleClick}&gt;Start&lt;/button&gt;
+&lt;button value='stop' onClick={handleClick}&gt;Stop&lt;/button&gt;</code></pre>
+              <p>Now we call the startStop method in the handleClick function. The first parameter is the number of DOM elements and the second is the value "start" or "stop".</p>
+              <pre><code>function handleClick(event) {
+  webVoiceCommand.startStop(2, event.target.value)
+}</code></pre>
+              <p>This will turn listening on/off.</p>
+
+              <p><strong>wordList()</strong><br>
+              The wordlist method is used with a list of words you want the user to use. It can be used with or without actionWords. actionWords are used to trigger lists of words to search through. I will show wordList with and without actionWords.</p>
+              <p>The wordlist method takes three parameters,</p>
+              <ul>
+                <li>words: Array of objects.</li>
+                <li>withActions: A boolean.</li>
+                <li>callback: Returns an array of matched words if you are not using actionWords or a single word if you are using actionWords.</li>
+              </ul>
+
+              <p><em>with actionWords</em></p>
+              <pre><code>const words = [
+  {
+    actionWord: {
+      name: 'pick',
+      options: [
+        {
+          word: 'blue',
+          alternateWord: []
+        },
+        {
+          word: 'red',
+          alternateWord: []
+        },
+        {
+          word: 'yellow',
+          alternateWord: []
+      }]
+    }
+  },
+  {
+    actionWord: {
+      name: 'select',
+      options: [
+        {
+          word: 'home',
+          alternateWord: []
+        },
+        {
+          word: 'about',
+          alternateWord: []
+        },
+        {
+          word: 'contact',
+          alternateWord: []
+        }
+      ]
+    }
+  }
+]
+
+const withActions = true
+
+webVoiceCommand.wordList(words, withActions, function(result) {
+  console.log(result)
+})</code></pre>
+              <p>With the voice input of "pick blue" the wordList method will return:</p>
+              <pre><code>blue</code></pre>
+
+              <p><em>without actionWords</em></p>
+              <pre><code>const words = [
+    {
+      word: {
+      name: 'red',
+      alternateWord: []
+      }
+    },
+    {
+      word: {
+        name: 'blue',
+        alternateWord: []
+      }
+    },
+    {
+      word: {
+        name: 'yellow',
+        alternateWord: []
+      }
+    }
+  ]
+
+const withActions = false
+
+webVoiceCommand.wordList(words, withActions, function(result) {
+  console.log(result)
+})</code></pre>
+            </article>
+          </div>
+
+          <section class="mobile-nav" id="mobile-nav">
+            <div class="nav">
+              <div class="nav-title">main</div>
+              <ul class="ul">
+                <li class="li"><a href="/" class="a">home</a></li>
+                <li class="li"><a href="/blog" class="a">blog</a></li>
+              </ul>
+            </div>
+            <div class="nav">
+              <div class="nav-title">links</div>
+              <ul class="ul">
+                <li class="li"><a href="https://www.linkedin.com/in/matoval/" target="_blank" rel="noopener noreferrer">linkedin</a></li>
+                <li class="li"><a href="https://github.com/matoval" target="_blank" rel="noopener noreferrer">github</a></li>
+                <li class="li"><a href="/Matthew_Sandoval_Resume.pdf" target="_blank" rel="noopener noreferrer">resume</a></li>
+                <li class="li"><a href="mailto:mat24c@gmail.com">email</a></li>
+              </ul>
+            </div>
+            <div class="nav">
+              <div class="nav-title"><a href="/blog">blog</a></div>
+              <ul class="ul">
+                <li class="li active"><a href="/blog/web-voice-command-package" class="a active" aria-current="page">web-voice-command Package</a></li>
+                <li class="li"><a href="/blog/using_sprite_sheets_in_ebitengine" class="a">Using sprite sheets in Ebitengine</a></li>
+              </ul>
+            </div>
+          </section>
+
+        </div>
+      </div>
+
+      <footer>
+        <p>Copyright &copy; <span id="year">2026</span> Matthew Sandoval All Rights Reserved</p>
+      </footer>
+    </div>
+  </main>
+
+  <script src="/script.js"></script>
+</body>
+</html>
